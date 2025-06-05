@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veritas Memory</title>
+</head>
+<body>
+  <h1>Veritas Memory</h1>
+  <ul id="insights"></ul>
+  <script>
+    fetch('insights.json')
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById('insights');
+        data.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          list.appendChild(li);
+        });
+      })
+      .catch(() => {
+        document.body.innerHTML += '<p>Error loading insights.</p>';
+      });
+  </script>
+</body>
+</html>
