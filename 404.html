@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting Insight</title>
+</head>
+<body>
+  <script>
+    const path = window.location.pathname;
+    const encodedPath = encodeURIComponent(path.slice(1));
+    if (encodedPath) {
+      fetch("https://veritasmemory.org/memory/" + encodedPath)
+        .then(() => {
+          window.location.href = "/memory";
+        })
+        .catch(() => {
+          document.body.innerHTML = "<h1>Failed to send insight.</h1>";
+        });
+    } else {
+      document.body.innerHTML = "<h1>No insight provided.</h1>";
+    }
+  </script>
+</body>
+</html>
