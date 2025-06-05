@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
   <title>Veritas Memory</title>
 </head>
 <body>
   <h1>Veritas Memory</h1>
   <ul id="insights"></ul>
   <script>
-    fetch('insights.json')
+    fetch('insights.json?t=' + new Date().getTime())
       .then(response => response.json())
       .then(data => {
         const list = document.getElementById('insights');
